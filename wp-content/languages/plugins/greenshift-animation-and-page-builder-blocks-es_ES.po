@@ -1,0 +1,1089 @@
+# Translation of Plugins - Greenshift &#8211; animation and page builder blocks - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Greenshift &#8211; animation and page builder blocks - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-12-28 11:15:46+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Greenshift &#8211; animation and page builder blocks - Stable (latest release)\n"
+
+#: templates/admin/welcome-page.php:1009
+msgid "GreenShift blocks first"
+msgstr "Bloques GreenShift primero"
+
+#: templates/admin/welcome-page.php:1008
+msgid "Both, Beginner first"
+msgstr "Ambos, primero el principiante"
+
+#: templates/admin/welcome-page.php:1000
+msgid "Both, Professional first"
+msgstr "Ambos, profesional primero"
+
+#: templates/admin/welcome-page.php:985
+msgid "GreenShift Blocks with visual helpers"
+msgstr "Bloques GreenShift con ayudas visuales"
+
+#: templates/admin/welcome-page.php:984
+msgid "Beginner Blocks"
+msgstr "Bloques para principiantes"
+
+#: templates/admin/welcome-page.php:972
+msgid "Choose your Content blocks"
+msgstr "Elige tus bloques de contenido"
+
+#: blockrender/video/block.json
+msgctxt "block title"
+msgid "Video"
+msgstr "Vídeo"
+
+#: blockrender/toggler/block.json
+msgctxt "block title"
+msgid "Toggler"
+msgstr "Alternador"
+
+#: blockrender/toc/block.json
+msgctxt "block title"
+msgid "Table of Content"
+msgstr "Tabla de contenido"
+
+#: blockrender/titlebox/block.json
+msgctxt "block title"
+msgid "Title Box"
+msgstr "Caja de título"
+
+#: blockrender/text/block.json
+msgctxt "block title"
+msgid "Advanced text"
+msgstr "Texto avanzado"
+
+#: blockrender/tabs/block.json
+msgctxt "block title"
+msgid "Tabs"
+msgstr "Pestañas"
+
+#: blockrender/tab/block.json
+msgctxt "block title"
+msgid "Tab"
+msgstr "Pestaña"
+
+#: blockrender/switcher/block.json
+msgctxt "block title"
+msgid "Switcher"
+msgstr "Interruptor"
+
+#: blockrender/swiper/block.json
+msgctxt "block title"
+msgid "Slider"
+msgstr "Carrusel"
+
+#: blockrender/swipe/block.json
+msgctxt "block title"
+msgid "Slide"
+msgstr "Diapositiva"
+
+#: blockrender/svg-shape/block.json
+msgctxt "block title"
+msgid "Shape Divider"
+msgstr "Divisor de forma"
+
+#: blockrender/spline3d/block.json
+msgctxt "block title"
+msgid "Spline 3d Loader"
+msgstr "Cargador Spline 3D"
+
+#: blockrender/social-share/block.json
+msgctxt "block description"
+msgid "Social Share buttons"
+msgstr "Botones para compartir en redes sociales"
+
+#: blockrender/social-share/block.json
+msgctxt "block title"
+msgid "Social Share"
+msgstr "Compartir en redes sociales"
+
+#: blockrender/row/block.json
+msgctxt "block title"
+msgid "Row"
+msgstr "Fila"
+
+#: blockrender/progressbar/block.json
+msgctxt "block title"
+msgid "Progress Bar"
+msgstr "Barra de progreso"
+
+#: blockrender/modelviewer/block.json
+msgctxt "block title"
+msgid "3D Model Viewer"
+msgstr "Visor de modelos 3D"
+
+#: blockrender/map/block.json
+msgctxt "block title"
+msgid "Map"
+msgstr "Mapa"
+
+#: blockrender/infobox/block.json
+msgctxt "block title"
+msgid "Infobox"
+msgstr "Caja de información"
+
+#: blockrender/image/block.json
+msgctxt "block title"
+msgid "Image"
+msgstr "Imagen"
+
+#: blockrender/iconList/block.json
+msgctxt "block title"
+msgid "Icon List"
+msgstr "Lista con iconos"
+
+#: blockrender/icon-box/block.json
+msgctxt "block title"
+msgid "Icon box"
+msgstr "Caja de icono"
+
+#: blockrender/heading/block.json
+msgctxt "block title"
+msgid "Heading"
+msgstr "Encabezado"
+
+#: blockrender/counter/block.json
+msgctxt "block title"
+msgid "Counter"
+msgstr "Contador"
+
+#: blockrender/countdown/block.json
+msgctxt "block title"
+msgid "Countdown"
+msgstr "Cuenta atrás"
+
+#: blockrender/container/block.json
+msgctxt "block title"
+msgid "Container"
+msgstr "Contenedor"
+
+#: blockrender/column/block.json
+msgctxt "block title"
+msgid "Column"
+msgstr "Columna"
+
+#: blockrender/button/block.json blockrender/buttonbox/block.json
+msgctxt "block title"
+msgid "Button"
+msgstr "Botón"
+
+#: blockrender/accordionitem/block.json
+msgctxt "block title"
+msgid "Accordion item"
+msgstr "Elemento del acordeón"
+
+#: blockrender/accordion/block.json
+msgctxt "block title"
+msgid "Accordion"
+msgstr "Acordeón"
+
+#: templates/admin/welcome-page.php:959
+msgid "Turn your regular design into a high-quality site with attractive animations, interactions, dynamic and marketing blocks in an FSE environment"
+msgstr "Transforma tu diseño convencional en un sitio de alta calidad, con animaciones atractivas, interacciones, bloques dinámicos y de marketing en un entorno de FSE"
+
+#: templates/admin/upgrade-page.php:297
+msgid "Congratulations, You have our Best available plan"
+msgstr "Felicitaciones, tienes nuestro mejor plan disponible"
+
+#: templates/admin/settings_general_font_item.php:75
+msgid "Remove Font"
+msgstr "Eliminar fuente"
+
+#: templates/admin/settings_general_font_item.php:67
+msgid "Use only for fonts which are attached to global elements"
+msgstr "Usar únicamente para fuentes que estén vinculadas a elementos globales."
+
+#: templates/admin/settings_general_font_item.php:61
+msgid "Font Preloaded"
+msgstr "Fuente precargada"
+
+#: templates/admin/settings_general_font_item.php:51 build/gspbSiteEditor.js:1
+#: build/gspbStylebook.js:1
+msgid "Remove"
+msgstr "Eliminar"
+
+#: templates/admin/settings_general_font_item.php:46
+msgid "Current file"
+msgstr "Archivo actual"
+
+#: templates/admin/settings_general_font_item.php:42
+msgid "Upload .%s font file"
+msgstr "Subir archivo de fuente .%s"
+
+#: templates/admin/settings_general_font_item.php:35
+msgid "Font file"
+msgstr "Archivo de fuente"
+
+#: templates/admin/settings_general_font_item.php:27
+msgid "Make sure that name has only Latin symbols without numbers and special characters"
+msgstr "Asegúrate de que el nombre tenga solo símbolos latinos sin números ni caracteres especiales"
+
+#: templates/admin/settings_general_font_item.php:21
+msgid "Font Family Name"
+msgstr "Nombre de la familia de fuentes"
+
+#: templates/admin/settings_general_font_item.php:13
+msgid "Font"
+msgstr "Fuente"
+
+#: templates/admin/navleft.php:114
+msgid "Support/Contact Us"
+msgstr "Soporte / Contacta con nosotros"
+
+#: templates/admin/navleft.php:94
+msgid "Demo Site Import"
+msgstr "Importación del sitio de demostración"
+
+#: templates/admin/navleft.php:83
+msgid "License Manager"
+msgstr "Gestor de licencias"
+
+#: templates/admin/navleft.php:66
+msgid "Get Started"
+msgstr "Primeros pasos"
+
+#: templates/admin/navleft.php:55
+msgid "Upgrade Plan"
+msgstr "Mejora el plan"
+
+#: templates/admin/navleft.php:47
+msgid "Free version"
+msgstr "Versión gratuita"
+
+#: templates/admin/import-page.php:532
+msgid "Custom Default attributes"
+msgstr "Atributos personalizados por defecto"
+
+#: templates/admin/import-page.php:528
+msgid "Greenshift Site settings"
+msgstr "Ajustes del sitio Greenshift"
+
+#: templates/admin/import-page.php:526
+msgid "Greenshift global styles"
+msgstr "Estilos globales de Greenshift"
+
+#: templates/admin/import-page.php:524
+msgid "Greenshift typography"
+msgstr "Tipografía de Greenshift"
+
+#: templates/admin/import-page.php:522
+msgid "System Elements design"
+msgstr "Diseño de elementos del sistema"
+
+#: templates/admin/import-page.php:520 build/gspbSiteEditor.js:1
+msgid "Global Classes"
+msgstr "Clases globales"
+
+#: templates/admin/import-page.php:518
+msgid "Greenshift global colors"
+msgstr "Colores globales de Greenshift"
+
+#: templates/admin/import-page.php:516
+msgid "Local font styles"
+msgstr "Estilos de fuente locales"
+
+#: templates/admin/import-page.php:514
+msgid "Local fonts"
+msgstr "Fuente locales"
+
+#: templates/admin/import-page.php:512 build/gspbLibrary.js:1
+msgid "Presets"
+msgstr "Preajustes"
+
+#: templates/admin/import-page.php:510
+msgid "Reusable Styles"
+msgstr "Estilos reutilizables"
+
+#: templates/admin/import-page.php:508
+msgid "Localization"
+msgstr "Localización"
+
+#: templates/admin/import-page.php:504
+msgid "Script Management"
+msgstr "Gestión de script"
+
+#: templates/admin/import-page.php:476
+msgid "Click the button below to generate json file"
+msgstr "Haz clic en el botón inferior para generar el archivo json"
+
+#: templates/admin/import-page.php:475
+msgid "Export your Greenshift global settings"
+msgstr "Exportar tus ajustes globales de Greenshift"
+
+#: templates/admin/import-page.php:467
+msgid "Import Data"
+msgstr "Importar datos"
+
+#: templates/admin/import-page.php:458
+msgid "Data imported successfully from"
+msgstr "Datos importados correctamente desde"
+
+#: templates/admin/import-page.php:441
+msgid "Please select a JSON file to import."
+msgstr "Por favor, selecciona un archivo JSON para importar."
+
+#: templates/admin/import-page.php:437
+msgid "Import your Greenshift global settings"
+msgstr "Importar tus ajustes globales de Greenshift"
+
+#: templates/admin/import-page.php:419 templates/admin/import-page.php:548
+msgid "No reusable blocks found."
+msgstr "No se encontraron bloques reutilizables."
+
+#: templates/admin/import-page.php:372
+msgid "Export your reusable templates."
+msgstr "Exporta tus plantillas reutilizables."
+
+#: templates/admin/import-page.php:357
+msgid "Import your reusable templates."
+msgstr "Importar tus plantillas reutilizables."
+
+#: templates/admin/import-page.php:349 templates/admin/import-page.php:430
+#: templates/admin/import-page.php:559
+msgid "You currently do not have any customized Templates, Template Parts, or Custom Styles saved in the WordPress database."
+msgstr "Actualmente no tienes ninguna plantilla personalizada, partes de plantilla ni estilos personalizados, guardados en la base de datos de WordPress."
+
+#: templates/admin/import-page.php:344 templates/admin/import-page.php:350
+#: templates/admin/import-page.php:425 templates/admin/import-page.php:431
+#: templates/admin/import-page.php:554 templates/admin/import-page.php:560
+msgid "Download Export File"
+msgstr "Descargar archivo de exportación"
+
+#: templates/admin/import-page.php:327
+msgid " (template part)"
+msgstr " (parte de plantilla)"
+
+#: templates/admin/import-page.php:325
+msgid " (template)"
+msgstr " (plantilla)"
+
+#: templates/admin/import-page.php:319
+msgid "Unknown theme"
+msgstr "Tema desconocido"
+
+#: templates/admin/import-page.php:314
+msgid " (active theme)"
+msgstr " (tema activo)"
+
+#: templates/admin/import-page.php:267 templates/admin/import-page.php:396
+#: templates/admin/import-page.php:493
+msgid "Select all"
+msgstr "Seleccionar todo"
+
+#: templates/admin/import-page.php:245 templates/admin/import-page.php:374
+#: templates/admin/import-page.php:477
+msgid "Once you&#8217;ve saved the download file, you can use the Import option in another site to import the design from this site."
+msgstr "Una vez que hayas guardado el archivo descargado, puedes usar la opción importar en otro sitio para importar el diseño de este sitio."
+
+#: templates/admin/import-page.php:244 templates/admin/import-page.php:373
+msgid "Click the button below to generate XML file"
+msgstr "Haga clic en el botón de abajo para generar un archivo XML"
+
+#: templates/admin/import-page.php:243
+msgid "Export your Full Site Editing design."
+msgstr "Exporta el diseño de tu edición completa del sitio"
+
+#: templates/admin/import-page.php:228
+msgid "Import your FSE templates."
+msgstr "Importar tus plantillas FSE."
+
+#. translators: %1$s: opening <a> tag with themes.php admin link, %2$s: closing
+#. </a> tag
+#: templates/admin/import-page.php:176
+msgid "This site does not have Full Site Editing enabled. Please install and activate a %1$sblock theme%2$s. Recommended theme - %3$sGreenshift%2$s"
+msgstr "Este sitio no tiene activada la edición completa del sitio. Por favor, instala y activa un %1$stema de bloques%2$s. Tema recomendado - %3$sGreenshift%2$s"
+
+#: templates/admin/import-page.php:29
+msgid "Greenshift Global"
+msgstr "Greenshift Global"
+
+#: templates/admin/import-page.php:27
+msgid "FSE Templates"
+msgstr "Plantillas FSE"
+
+#: templates/admin/import-demo.php:252
+msgid "Show details"
+msgstr "Mostrar detalles"
+
+#: templates/admin/import-demo.php:246
+msgid "Import is in progress. Do not close this page until you get message about import results"
+msgstr "La importación está en curso. No cierres esta página hasta que recibas un mensaje sobre los resultados de la importación"
+
+#: templates/admin/import-demo.php:229
+msgid "Import Only FSE templates"
+msgstr "Importar solo plantillas FSE"
+
+#: templates/admin/import-demo.php:223
+msgid "Import Demo"
+msgstr "Importar Demo"
+
+#: templates/admin/import-demo.php:214
+msgid "Query addon is required"
+msgstr "Es necesaria la extensión Query"
+
+#: templates/admin/import-demo.php:212
+msgid "Query addon is active."
+msgstr "La extensión Query está activa."
+
+#: templates/admin/import-demo.php:209
+msgid "Woocommerce addon is required"
+msgstr "Es necesaria la extensión de Woocommerce"
+
+#: templates/admin/import-demo.php:207
+msgid "Woocommerce addon is active."
+msgstr "La extensión de Woocommerce está activa."
+
+#: templates/admin/import-demo.php:203
+msgid "WooCommerce Full Site Editing Theme offers an unparalleled level of customization control.  So if you're ready to take your ecommerce business to the next level, consider using the WooCommerce Full Site Editing Theme as your starting point."
+msgstr "El tema de edición completa del sitio para WooCommerce ofrece un nivel inigualable de control de personalización. Así que, si estás listo para llevar tu negocio de comercio electrónico al siguiente nivel, considera utilizar el tema de edición completa del sitio para WooCommerce como punto de partida."
+
+#. translators: %1$s: opening <a> tag with themes.php admin link, %2$s: closing
+#. </a> tag
+#: templates/admin/import-demo.php:189
+msgid "Please install and activate a %1$sGreenshift theme%2$s to use demo sites."
+msgstr "Por favor instala y activa el %1$stema Greenshift%2$s para usar los sitios de demostración."
+
+#: templates/admin/import-demo.php:169 templates/admin/import-page.php:170
+msgid "Please ask your site administrator to enable import and export capabilities for your user account."
+msgstr "Por favor, solicita a tu administrador del sitio que habilite las capacidades de importación y exportación para tu cuenta de usuario."
+
+#: templates/admin/import-demo.php:162 templates/admin/import-page.php:189
+msgid "Before using the importer, it is recommended to save and back up your current design using the Export function."
+msgstr "Antes de usar el importador, se recomienda guardar y hacer una copia de seguridad de tu diseño actual utilizando la función exportar."
+
+#: templates/admin/import-demo.php:21
+msgid "Import Demo Site"
+msgstr "Importar el sitio de demostración"
+
+#: templates/admin/contact-page.php:34
+msgid "Support Board - for buyers of premium addons"
+msgstr "Panel de soporte - para compradores de extensiones premium"
+
+#: templates/admin/contact-page.php:31
+msgid "Ticket system on Wordpress.org"
+msgstr "Sistema de tiques en WordPress.org"
+
+#: templates/admin/contact-page.php:27
+msgid "Private contact form"
+msgstr "Formulario de contacto privado"
+
+#: templates/admin/contact-page.php:24
+msgid "Thank you for using Greenshift. For any bug report or questions, please, contact us:"
+msgstr "Gracias por utilizar Greenshift. Si quieres informar de algún fallo o tienes preguntas, por favor, contacta con nosotros:"
+
+#: templates/admin/addon-page.php:250 templates/admin/addon-page.php:280
+#: templates/admin/addon-page.php:310 templates/admin/addon-page.php:342
+#: templates/admin/addon-page.php:374
+msgid "Buy Now"
+msgstr "Comprar ahora"
+
+#: templates/admin/addon-page.php:221
+msgid "Here you can find your active addons. Each addon extends functionality of your site by additional blocks and features. You can buy them separately or as part of plans. After purchase, download zip files in your account and upload in Plugins - Add new"
+msgstr "Aquí puedes encontrar tus extensiones activas. Cada extensión amplía la funcionalidad de tu sitio con bloques y características adicionales. Puedes comprarlos por separado o como parte de planes. Después de la compra, descarga los archivos zip en tu cuenta y súbelos en Plugins - Añadir nuevo"
+
+#: templates/admin/addon-page.php:20
+msgid "Your addons"
+msgstr "Tus extensiones"
+
+#: settings.php:1398
+msgid "On view trigger:"
+msgstr "Activador al visualizarse:"
+
+#: settings.php:1397
+msgid "Click trigger:"
+msgstr "Activador al hacer clic:"
+
+#: settings.php:1396
+msgid "Hover trigger:"
+msgstr "Activador al pasar el cursor:"
+
+#: settings.php:1395
+msgid "Shortcode for Ajax render:"
+msgstr "Shortcode para mostrarlo mediante ajax:"
+
+#: settings.php:1394
+msgid "If you use template inside other dynamic ajax blocks"
+msgstr "Si utilizas una plantilla dentro de otros bloques de Ajax dinámicos"
+
+#: settings.php:1380
+msgid "Usage"
+msgstr "Uso"
+
+#: settings.php:1379
+msgid "Block title"
+msgstr "Título del bloque"
+
+#: settings.php:1234 build/gspbLibrary.js:1
+msgid "Documentation"
+msgstr "Documentación"
+
+#: settings.php:1234
+msgid "Attention! Local font is global option and it can reduce performance in some cases. Do not use more than 2 global fonts. Please, check"
+msgstr "¡Atención! Las fuentes locales son una opción global y pueden reducir el rendimiento en algunos casos. No utilices más de 2 fuentes globales. Por favor, consulta la"
+
+#: settings.php:1214 templates/admin/settings_general_form.php:39
+#: build/gspbSiteEditor.js:1 build/gspbStylebook.js:1
+msgid "Save"
+msgstr "Guardar"
+
+#: settings.php:1202
+msgid "Custom code before closed Body"
+msgstr "Código personalizado antes del cierre de Body"
+
+#: settings.php:1196
+msgid "Custom code in head section"
+msgstr "Código personalizado en la sección de cabecera"
+
+#: settings.php:1185
+msgid "Footer and Head Hooks"
+msgstr "Ganchos del pie de página y cabecera"
+
+#: settings.php:971
+msgid "Open AI API Key"
+msgstr "Clave API de Open AI"
+
+#: settings.php:966 settings.php:975 settings.php:984 settings.php:993
+#: settings.php:1002
+msgid "Get an API Key"
+msgstr "Obtener una clave API"
+
+#: settings.php:962 templates/admin/import-page.php:530
+msgid "Google API Key"
+msgstr "Clave API de Google"
+
+#: settings.php:879
+msgid "Specify URLs of pages (one per line)."
+msgstr "Especificar las URLs de las páginas (una por línea)."
+
+#: settings.php:875
+msgid "Page Urls (one per line)."
+msgstr "URLs de página (una por línea)."
+
+#: settings.php:869
+msgid "Enable on whole site except selected pages"
+msgstr "Activar en todo el sitio excepto en páginas seleccionadas"
+
+#: settings.php:868
+msgid "Enable only on selected pages"
+msgstr "Activar solo en páginas seleccionadas"
+
+#: settings.php:867
+msgid "Enable on whole site"
+msgstr "Activar en todo el sitio"
+
+#: settings.php:864
+msgid "Javascript delay options"
+msgstr "Opciones de retraso de JavaScript"
+
+#: settings.php:860
+msgid "Enable script delay for Greenshift's scripts"
+msgstr "Activar el retraso de script para los scripts de Greenshift"
+
+#: settings.php:850
+msgid "Attention! This is experimental feature"
+msgstr "¡Atención! Esta es una característica experimental"
+
+#: settings.php:842
+msgid "Javascript Files Delay"
+msgstr "Retraso de archivos Javascript"
+
+#: settings.php:791
+msgid "Default Row Content Width"
+msgstr "Ancho por defecto del contenido de fila"
+
+#: settings.php:783
+msgid "Desktop"
+msgstr "Escritorio"
+
+#: settings.php:775
+msgid "Tablet"
+msgstr "Tableta"
+
+#: settings.php:767
+msgid "Mobile"
+msgstr "Móvil"
+
+#: settings.php:660 templates/admin/addon-page.php:248
+#: templates/admin/addon-page.php:278 templates/admin/addon-page.php:308
+#: templates/admin/addon-page.php:340 templates/admin/addon-page.php:372
+#: templates/admin/settings_general_font_item.php:49
+msgid "Download"
+msgstr "Descarga"
+
+#: settings.php:578 settings.php:724 settings.php:885 settings.php:1084
+msgid "Save settings"
+msgstr "Guardar ajustes"
+
+#: settings.php:560
+msgid "Inline in block"
+msgstr "Integrado en bloque"
+
+#: settings.php:559
+msgid "Inline in Head"
+msgstr "Integrado en la cabecera"
+
+#: settings.php:556
+msgid "Css location"
+msgstr "Ubicación del CSS"
+
+#: settings.php:550
+msgid "Use Inline in block only if you have some issues with not updating styles of blocks or cache. Once saved as inline in block, styles can be overwritten only when you update post with blocks"
+msgstr "Usar integrado en bloque solo si tienes problemas con la actualización de estilos de bloques o la caché. Una vez guardado como integrado en bloque, los estilos solo se pueden sobrescribir al actualizar la publicación con bloques"
+
+#: settings.php:504 settings.php:589 settings.php:818 settings.php:897
+#: settings.php:1099
+msgid "Sorry, your nonce did not verify."
+msgstr "Lo siento, tu nonce no se ha verificado."
+
+#: settings.php:490
+msgid "Header/Footer code"
+msgstr "Código de cabecera/pie de página"
+
+#: settings.php:489
+msgid "Script Options"
+msgstr "Opciones de script"
+
+#: settings.php:488
+msgid "CSS Options"
+msgstr "Opciones de CSS"
+
+#: settings.php:487 templates/admin/import-page.php:506
+msgid "Breakpoints"
+msgstr "Puntos de ruptura"
+
+#: settings.php:384
+msgid "Create Stylebook"
+msgstr "Crear libro de estilos"
+
+#: settings.php:265 settings.php:266 settings.php:274 settings.php:275
+#: templates/admin/navleft.php:70 build/gspbStylebook.js:1
+msgid "Stylebook"
+msgstr "Libro de estilos"
+
+#: settings.php:242 settings.php:243
+msgid "Demo Import"
+msgstr "Importar Demo"
+
+#: settings.php:234 settings.php:235 templates/admin/import-page.php:22
+#: templates/admin/navleft.php:87
+msgid "Import/Export"
+msgstr "Importar/Exportar"
+
+#: settings.php:226 settings.php:227 templates/admin/contact-page.php:17
+msgid "Contact Us"
+msgstr "Contacta con nosotros"
+
+#: settings.php:217 settings.php:218
+msgid "Upgrade"
+msgstr "Mejorar"
+
+#: settings.php:208 settings.php:209 templates/admin/navleft.php:80
+msgid "Addons"
+msgstr "Extensiones"
+
+#: settings.php:199 settings.php:200 settings.php:482
+msgid "Settings"
+msgstr "Ajustes"
+
+#: settings.php:176 settings.php:177 templates/admin/import-page.php:28
+msgid "Reusable Templates"
+msgstr "Plantillas reutilizables"
+
+#: init.php:2784 settings.php:1324
+msgid "JSON is not saved due the permission!!!"
+msgstr "¡El JSON no puede ser guardado debido a los permisos!"
+
+#: init.php:2467
+msgid "Invalid application password."
+msgstr "Contraseña de aplicación no válida."
+
+#: init.php:845
+msgid "Reusable Component"
+msgstr "Componente reutilizable"
+
+#: init.php:825 settings.php:379
+msgid "GreenShift Stylebook"
+msgstr "Libro de estilos de GreenShift"
+
+#: includes/patterns.php:1976
+msgctxt "Block pattern description"
+msgid "Block with CTA"
+msgstr "Bloque con CTA"
+
+#: includes/patterns.php:1972
+msgid "CTA banner block"
+msgstr "Bloque de banner CTA"
+
+#: includes/patterns.php:1911
+msgctxt "Block pattern description"
+msgid "CTA block with button"
+msgstr "Bloque CTA con botón"
+
+#: includes/patterns.php:1907
+msgid "CTA panel with button"
+msgstr "CTA panel con botón"
+
+#: includes/patterns.php:1867
+msgctxt "Block pattern description"
+msgid "Image Grid with Headline"
+msgstr "Cuadrícula de imágenes con titular"
+
+#: includes/patterns.php:1863
+msgid "Image Grid with Headline"
+msgstr "Cuadrícula de imágenes con titular"
+
+#: includes/patterns.php:1664
+msgid "Full Featured CTA"
+msgstr "CTA con todas las funciones"
+
+#: includes/patterns.php:1574
+msgctxt "Block pattern description"
+msgid "Category grid"
+msgstr "Cuadrícula de categorías"
+
+#: includes/patterns.php:1570
+msgid "Category grid"
+msgstr "Cuadrícula de categorías"
+
+#: includes/patterns.php:1502
+msgid "Columned info block"
+msgstr "Bloque de información de columna"
+
+#: includes/patterns.php:1421
+msgctxt "Block pattern description"
+msgid "Step cards"
+msgstr "Tarjetas con pasos"
+
+#: includes/patterns.php:1417
+msgid "Step cards"
+msgstr "Tarjetas con pasos"
+
+#: includes/patterns.php:1373
+msgctxt "Block pattern description"
+msgid "Info with review"
+msgstr "Información con reseña"
+
+#: includes/patterns.php:1369
+msgid "Info with review"
+msgstr "Información con reseña"
+
+#: includes/patterns.php:1291
+msgctxt "Block pattern description"
+msgid "Featured product with card"
+msgstr "Producto destacado con tarjeta"
+
+#: includes/patterns.php:1287
+msgid "Featured product with card"
+msgstr "Producto destacado con tarjeta"
+
+#: includes/patterns.php:1215
+msgctxt "Block pattern description"
+msgid "Info block with icon steps"
+msgstr "Bloque de información con pasos e iconos"
+
+#: includes/patterns.php:1211
+msgid "Info block with icon steps"
+msgstr "Bloque de información con pasos e iconos"
+
+#: includes/patterns.php:1097
+msgctxt "Block pattern description"
+msgid "Info with steps"
+msgstr "Información con pasos"
+
+#: includes/patterns.php:1093
+msgid "Info with steps"
+msgstr "Información con pasos"
+
+#: includes/patterns.php:1036
+msgid "Video with CTA"
+msgstr "Vídeo con CTA"
+
+#: includes/patterns.php:475
+msgctxt "Block pattern description"
+msgid "Icon block"
+msgstr "Bloque de icono"
+
+#: includes/patterns.php:471
+msgid "Four circled icons"
+msgstr "Cuatro iconos circulares"
+
+#: includes/patterns.php:315
+msgctxt "Block pattern description"
+msgid "Price table"
+msgstr "Tabla de precios"
+
+#: includes/patterns.php:311
+msgid "Price table"
+msgstr "Tabla de precios"
+
+#: includes/patterns.php:181
+msgctxt "Block pattern description"
+msgid "Central Features"
+msgstr "Características centrales"
+
+#: includes/patterns.php:177
+msgid "Central Features"
+msgstr "Características centrales"
+
+#: includes/patterns.php:133
+msgid "Block with CTA"
+msgstr "Bloque con CTA"
+
+#: includes/patterns.php:115
+msgctxt "Block pattern description"
+msgid "CTA banner block"
+msgstr "Bloque de banner CTA"
+
+#: includes/patterns.php:111
+msgid "CTA simple banner"
+msgstr "Banner simple CTA"
+
+#: includes/patterns.php:51
+msgid "Container grid 4 items"
+msgstr "Contenedor de cuadrícula con 4 elementos"
+
+#: includes/patterns.php:41
+msgctxt "Block pattern description"
+msgid "List with check marks"
+msgstr "Lista con marcas de verificación"
+
+#: includes/patterns.php:37
+msgid "List with checkmarks"
+msgstr "Lista con marcas de verificación"
+
+#: includes/patterns.php:27
+msgctxt "Block pattern description"
+msgid "button with secondary label and icon"
+msgstr "botón con etiqueta secundaria e icono"
+
+#: includes/patterns.php:24
+msgid "Button Style"
+msgstr "Estilo del botón"
+
+#: includes/patterns.php:17
+msgid "Greenshift Elements"
+msgstr "Elementos de Greenshift"
+
+#: includes/importer.php:858
+msgid "Invalid file type"
+msgstr "Tipo de archivo no válido"
+
+#: includes/importer.php:834
+msgid "The uploaded file could not be moved"
+msgstr "El archivo subido no se ha podido mover"
+
+#: includes/importer.php:819
+msgid "Sorry, this file type is not permitted for security reasons."
+msgstr "Lo siento, este tipo de archivo no está permitido por razones de seguridad."
+
+#: includes/importer.php:804
+msgid "Remote file is too large, limit is %s"
+msgstr "El archivo remoto es demasiado grande, el límite es de %s"
+
+#: includes/importer.php:798
+msgid "Downloaded file has incorrect size"
+msgstr "El archivo descargado tiene un tamaño incorrecto"
+
+#: includes/importer.php:793
+msgid "Zero size file downloaded"
+msgstr "Se ha descargado un archivo vacío"
+
+#: includes/importer.php:786
+msgid "Remote server did not respond"
+msgstr "El servidor remoto no responde"
+
+#. translators: 1: The HTTP error message. 2: The HTTP error code.
+#: includes/importer.php:774
+msgid "Remote server returned the following unexpected result: %1$s (%2$s)"
+msgstr "El servidor remoto ha devuelto el siguiente resultado inesperado: %1$s (%2$s)"
+
+#. translators: 1: The WordPress error message. 2: The WordPress error code.
+#: includes/importer.php:758
+msgid "Request failed due to an error: %1$s (%2$s)"
+msgstr "Ha fallado la solicitud debido a un error: %1$s (%2$s)"
+
+#: includes/importer.php:736
+msgid "Could not create temporary file."
+msgstr "No se ha podido crear el archivo temporal."
+
+#: includes/importer.php:577
+msgid "Updated header menu"
+msgstr "Menú de cabecera actualizado"
+
+#: includes/importer.php:566
+msgid "Updated Category Images"
+msgstr "Imágenes de categoría actualizadas"
+
+#: includes/importer.php:554
+msgid "Updated Featured Images"
+msgstr "Imágenes destacadas actualizadas"
+
+#: includes/importer.php:343
+msgid "products"
+msgstr "productos"
+
+#: includes/importer.php:341
+msgid "pages"
+msgstr "páginas"
+
+#: includes/importer.php:339
+msgid "posts"
+msgstr "entradas"
+
+#: includes/importer.php:337
+msgid "reusable templates"
+msgstr "plantillas reutilizables"
+
+#: includes/importer.php:335
+msgid "custom styles"
+msgstr "estilos personalizados"
+
+#: includes/importer.php:333
+msgid "template part"
+msgstr "parte de plantilla"
+
+#: includes/importer.php:331
+msgid "template"
+msgstr "plantilla"
+
+#: includes/importer.php:231
+msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
+msgstr "No se ha podido encontrar el archivo de exportación en <code>%s</code>. Es probable que esto haya sido causado por un problema de permisos."
+
+#: includes/importer.php:226 includes/importer.php:230
+#: includes/importer.php:242
+msgid "Sorry, there has been an error."
+msgstr "Lo siento, ha ocurrido un error."
+
+#: includes/importer.php:218
+msgid "Imported"
+msgstr "Importado"
+
+#: includes/importer.php:217
+msgid "Updated"
+msgstr "Actualizado"
+
+#: includes/helper.php:952
+msgid "Data attributes"
+msgstr "Atributos de datos"
+
+#: includes/helper.php:878
+msgid "Background Presets"
+msgstr "Preajustes del fondo"
+
+#: includes/helper.php:857
+msgid "Border Presets"
+msgstr "Preajustes de bordes"
+
+#: includes/helper.php:792
+msgid "Shadow Presets"
+msgstr "Preajustes de sombra"
+
+#: includes/helper.php:727
+msgid "Spacing Presets"
+msgstr "Preajustes de espaciado"
+
+#: includes/helper.php:698
+msgid "Interaction Presets"
+msgstr "Preajustes de interacción"
+
+#: edd/EddLicensePage.php:740
+msgid "Activated succesfull."
+msgstr "Activado correctamente."
+
+#: edd/EddLicensePage.php:439
+msgid "Your license key has reached its activation limit."
+msgstr "Tu clave de licencia ha alcanzado su límite de activación."
+
+#. translators: the plugin name
+#: edd/EddLicensePage.php:435
+msgid "This appears to be an invalid license key for %s."
+msgstr "Esta parece ser una clave de licencia no válida para %s."
+
+#: edd/EddLicensePage.php:430
+msgid "Your license is not active for this URL."
+msgstr "Tu licencia no está activa para esta URL."
+
+#: edd/EddLicensePage.php:425
+msgid "Invalid license."
+msgstr "Licencia no válida."
+
+#: edd/EddLicensePage.php:421
+msgid "Your license key has been disabled."
+msgstr "Tu clave de licencia ha sido desactivada."
+
+#. translators: the license key expiration date
+#: edd/EddLicensePage.php:414
+msgid "Your license key expired on %s."
+msgstr "Tu clave de licencia caducó el %s."
+
+#: edd/EddLicensePage.php:401 edd/EddLicensePage.php:443
+#: edd/EddLicensePage.php:568
+msgid "An error occurred, please try again."
+msgstr "Ha ocurrido un error, por favor, inténtalo de nuevo."
+
+#: edd/EddLicensePage.php:299
+msgid "Expires:"
+msgstr "Caduca:"
+
+#: edd/EddLicensePage.php:294
+msgid "This license is expired"
+msgstr "Esta licencia ha caducado"
+
+#: edd/EddLicensePage.php:284
+msgid "License:"
+msgstr "Licencia:"
+
+#: edd/EddLicensePage.php:276
+msgid "Activate License"
+msgstr "Activar licencia"
+
+#: edd/EddLicensePage.php:271
+msgid "Deactivate License"
+msgstr "Desactivar licencia"
+
+#: edd/EddLicensePage.php:256
+msgid "Enter your license key."
+msgstr "Introduce tu clave de licencia."
+
+#: edd/EddLicensePage.php:239
+msgid "This is where you enter your license key. If you have All in one license, you can activate it without activation separate addons"
+msgstr "Aquí es donde puedes introducir tu clave de licencia. Si tienes una licencia todo en uno, puedes activarla sin necesidad de activar las extensiones por separado"
+
+#: edd/EddLicensePage.php:215
+msgid "Plugins License Options"
+msgstr "Opciones de licencia de plugins"
+
+#: edd/EddLicensePage.php:172 edd/EddLicensePage.php:173
+#: edd/EddLicensePage.php:188
+msgid "Manage Licenses"
+msgstr "Gestionar licencias"
+
+#. Author of the plugin
+#: plugin.php
+msgid "Wpsoul"
+msgstr "Wpsoul"
+
+#. Description of the plugin
+#: plugin.php
+msgid "Animation and page builder for Gutenberg with highest web vitals"
+msgstr "Generador de animaciones y construcción de páginas para Gutenberg con los más altos estándares de rendimiento web"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: plugin.php
+msgid "https://greenshiftwp.com"
+msgstr "https://greenshiftwp.com"
+
+#. Plugin Name of the plugin
+#: plugin.php
+msgid "GreenShift - Animation and Page Builder Blocks"
+msgstr "GreenShift - Animation and Page Builder Blocks"
