@@ -155,3 +155,8 @@ define('AZSQL_USER',    'db-admin@sql-weastus2-prd-hifix'); // o solo 'wp_app_us
 define('AZSQL_PASS',    'rp<B53VhEq7.');
 define('AZSQL_ENCRYPT', true);    // debe ser true
 define('AZSQL_TRUST',   false);   // ideal false en prod
+
+//Activate logs
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_DISPLAY', false);
