@@ -151,7 +151,7 @@ require_once ABSPATH . 'wp-settings.php';
 // === Azure SQL (SQL Server) ===
 define('AZSQL_HOST',    'tcp:sql-weastus2-prd-hifix.database.windows.net,1433');
 define('AZSQL_DB',      'hifix');
-define('AZSQL_USER',    'db-admin'); // o solo 'wp_app_user'
+define('AZSQL_USER',    'db-admin@sql-weastus2-prd-hifix'); // o solo 'wp_app_user'
 define('AZSQL_PASS',    'rp<B53VhEq7.');
 define('AZSQL_ENCRYPT', true);    // debe ser true
 define('AZSQL_TRUST',   false);   // ideal false en prod
