@@ -2,35 +2,70 @@
 if (!defined('ABSPATH')) exit;
 
 class AZ_DB {
-  /** @var PDO */
-  private static $pdo;
+  private static $conn = null; // sqlsrv resource
 
-  public static function pdo() {
-    if (self::$pdo) return self::$pdo;
+  private static function conn() {
+    if (self::$conn) return self::$conn;
 
-    $encrypt = defined('AZSQL_ENCRYPT') && AZSQL_ENCRYPT ? 'Yes' : 'No';
-    $trust   = defined('AZSQL_TRUST')   && AZSQL_TRUST   ? 'Yes' : 'No';
-
-    $dsn = "sqlsrv:Server=".AZSQL_HOST.";Database=".AZSQL_DB.";Encrypt=$encrypt;TrustServerCertificate=$trust;LoginTimeout=30";
-
-    try {
-      self::$pdo = new PDO($dsn, AZSQL_USER, AZSQL_PASS, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::SQLSRV_ATTR_QUERY_TIMEOUT => 20
-      ]);
-    } catch (Throwable $e) {
-      wp_die('Error de conexión a Azure SQL: '.esc_html($e->getMessage()));
+    foreach (['AZSQL_HOST','AZSQL_DB','AZSQL_USER','AZSQL_PASS'] as $c) {
+      if (!defined($c)) wp_die('WP Azure SQL CRUD: Falta '.$c.' en wp-config.php');
     }
-    return self::$pdo;
+
+    $server = AZSQL_HOST; // ej: tcp:sql-weastus2-prd-hifix.database.windows.net,1433
+    $options = [
+      "Database" => AZSQL_DB,
+      "UID" => AZSQL_USER,                 // usa el mismo usuario que probaste
+      "PWD" => AZSQL_PASS,
+      "Encrypt" => 1,
+      "TrustServerCertificate" => (defined('AZSQL_TRUST') && AZSQL_TRUST) ? 1 : 0,
+      "LoginTimeout" => 15,
+      "CharacterSet" => "UTF-8",
+      "APP" => "WP-Azure-CRUD",
+      "HostNameInCertificate" => "*.database.windows.net",
+    ];
+
+    $conn = @sqlsrv_connect($server, $options);
+    if ($conn === false) {
+      $errs = sqlsrv_errors(SQLSRV_ERR_ALL);
+      $msg = 'Conexión SQLSRV falló';
+      if ($errs) {
+        $chunks = [];
+        foreach ($errs as $e) $chunks[] = "[{$e['SQLSTATE']}] {$e['code']}: {$e['message']}";
+        $msg .= ' — '.implode(' | ', $chunks);
+      }
+      wp_die(esc_html($msg));
+    }
+    self::$conn = $conn;
+    return self::$conn;
   }
 
   public static function query($sql, $params = []) {
-    $stmt = self::pdo()->prepare($sql);
-    foreach ($params as $k => $v) {
-      $type = is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR;
-      $stmt->bindValue(is_int($k) ? $k+1 : $k, $v, $type);
+    $stmt = sqlsrv_query(self::conn(), $sql, array_values($params), ["Scrollable" => SQLSRV_CURSOR_KEYSET]);
+    if ($stmt === false) self::die_sqlsrv();
+    $rows = [];
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+      foreach ($row as $k=>$v) if ($v instanceof DateTimeInterface) $row[$k] = $v->format('Y-m-d H:i:s');
+      $rows[] = $row;
     }
-    $stmt->execute();
-    return $stmt;
+    sqlsrv_free_stmt($stmt);
+    return $rows;
+  }
+
+  public static function execute($sql, $params = []) {
+    $stmt = sqlsrv_query(self::conn(), $sql, array_values($params));
+    if ($stmt === false) self::die_sqlsrv();
+    sqlsrv_free_stmt($stmt);
+    return true;
+  }
+
+  private static function die_sqlsrv() {
+    $errs = sqlsrv_errors(SQLSRV_ERR_ALL);
+    $msg = 'Error SQLSRV';
+    if ($errs) {
+      $parts = [];
+      foreach ($errs as $e) $parts[] = "[{$e['SQLSTATE']}] {$e['code']}: {$e['message']}";
+      $msg .= ' — '.implode(' | ', $parts);
+    }
+    wp_die(esc_html($msg));
   }
 }
