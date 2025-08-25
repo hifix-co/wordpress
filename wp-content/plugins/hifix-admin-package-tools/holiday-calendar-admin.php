@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Holiday Calendar Admin
- * Description: CRUD para la tabla hfx_holiday_calendar.
+ * Plugin Name: Hifix Admin Package tools
+ * Description: Paquete de funcionales para la administración hifix.
  * Version: 1.0.0
  * Author: Cristian Barajas
  */
@@ -22,19 +22,19 @@ class Holiday_Calendar_Admin {
 
     public function menu() {
         add_menu_page(
-            'Holiday Calendar',
-            'Holiday Calendar',
+            'Administración Hifix',
+            'Administración Hifix',
             'manage_options',
             'hca_list',
             [$this, 'render_list_page'],
-            'dashicons-calendar-alt',
+            'dashicons-admin-alt',
             26
         );
 
         add_submenu_page(
             'hca_list',
-            'Agregar/Editar',
-            'Agregar/Editar',
+            'Feriados',
+            'Feriados',
             'manage_options',
             'hca_form',
             [$this, 'render_form_page']
@@ -94,7 +94,7 @@ class Holiday_Calendar_Admin {
         $add_url = admin_url('admin.php?page=hca_form');
         ?>
         <div class="wrap">
-            <h1 class="wp-heading-inline">Holiday Calendar</h1>
+            <h1 class="wp-heading-inline">Administración de días feriados</h1>
             <a href="<?php echo esc_url($add_url); ?>" class="page-title-action">Agregar feriado</a>
             <hr class="wp-header-end">
 
@@ -203,16 +203,6 @@ class Holiday_Calendar_Admin {
                         <th scope="row"><label for="country">País</label></th>
                         <td><input required type="text" id="country" name="country" value="<?php echo esc_attr($row->country ?? 'CO'); ?>" class="regular-text" maxlength="100"></td>
                     </tr>
-                    <tr>
-                        <th scope="row"><label for="created_by">Creado por</label></th>
-                        <td><input type="text" id="created_by" name="created_by" value="<?php echo esc_attr($row->created_by ?? wp_get_current_user()->user_login); ?>" class="regular-text" maxlength="100"></td>
-                    </tr>
-                    <?php if ($is_edit): ?>
-                    <tr>
-                        <th scope="row"><label for="modified_by">Modificado por</label></th>
-                        <td><input type="text" id="modified_by" name="modified_by" value="<?php echo esc_attr(wp_get_current_user()->user_login); ?>" class="regular-text" maxlength="100"></td>
-                    </tr>
-                    <?php endif; ?>
                 </table>
 
                 <?php submit_button($is_edit ? 'Guardar cambios' : 'Crear feriado'); ?>
