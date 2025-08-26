@@ -174,16 +174,6 @@ class Holiday_Calendar_Admin {
                         <th scope="row"><label for="country">País</label></th>
                         <td><input required type="text" id="country" name="country" value="<?php echo esc_attr($row->country ?? 'CO'); ?>" class="regular-text" maxlength="100"></td>
                     </tr>
-                    <tr>
-                        <th scope="row"><label for="created_by">Creado por</label></th>
-                        <td><input type="text" id="created_by" name="created_by" value="<?php echo esc_attr($row->created_by ?? wp_get_current_user()->user_login); ?>" class="regular-text" maxlength="100"></td>
-                    </tr>
-                    <?php if ($is_edit): ?>
-                    <tr>
-                        <th scope="row"><label for="modified_by">Modificado por</label></th>
-                        <td><input type="text" id="modified_by" name="modified_by" value="<?php echo esc_attr(wp_get_current_user()->user_login); ?>" class="regular-text" maxlength="100"></td>
-                    </tr>
-                    <?php endif; ?>
                 </table>
 
                 <?php submit_button($is_edit ? 'Guardar cambios' : 'Crear feriado'); ?>
