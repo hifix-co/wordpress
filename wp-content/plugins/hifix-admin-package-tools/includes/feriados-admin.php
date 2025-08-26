@@ -12,21 +12,7 @@ class Holiday_Calendar_Admin {
         add_action('admin_post_hca_delete', [$this, 'handle_delete']);
     }
 
-/**
- * Submenú de feriados
- */
-add_action('admin_menu', function() {
-    add_submenu_page(
-        'hifix_admin',          // slug del menú principal
-        'Feriados',
-        'Feriados',
-        'manage_options',
-        'hifix_feriados',
-        'hifix_render_feriados_list'
-    );
-});
-
-private function check_caps() {
+    private function check_caps() {
         if (!current_user_can('manage_options')) {
             wp_die('No tienes permisos suficientes.');
         }
@@ -278,4 +264,21 @@ private function check_caps() {
     }
 }
 
-new Holiday_Calendar_Admin();
+// Instancia global de la clase para usar en los callbacks de menú
+global $hifix_hca;
+if ( ! isset($hifix_hca) || ! ($hifix_hca instanceof Holiday_Calendar_Admin) ) {
+    $hifix_hca = new Holiday_Calendar_Admin();
+}
+
+/**
+ * Callbacks requeridos por add_submenu_page (definidos en menu-dashboard.php)
+ */
+function hifix_render_feriados_list() {
+    global $hifix_hca;
+    $hifix_hca->render_list_page();
+}
+
+function hifix_render_feriados_form() {
+    global $hifix_hca;
+    $hifix_hca->render_form_page();
+}
