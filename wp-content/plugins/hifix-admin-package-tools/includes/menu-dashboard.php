@@ -11,9 +11,7 @@ add_action('admin_menu', function() {
         'Hifix Admin',
         'manage_options',
         'hifix_admin',
-        function () {
-            echo '<div class="wrap"><h1>Hifix Admin</h1><p>Bienvenido al paquete de herramientas de administración.</p></div>';
-        },
+        '',
         'dashicons-admin-tools',
         60
     );
