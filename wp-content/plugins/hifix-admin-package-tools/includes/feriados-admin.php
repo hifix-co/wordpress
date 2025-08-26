@@ -28,28 +28,35 @@ class Holiday_Calendar_Admin {
         $offset = ($page - 1) * $per_page;
 
         // Filtros básicos
-        $country = sanitize_text_field($_GET['country'] ?? '');
+        $country = sanitize_text_field($_GET['country_id'] ?? '');
         $date_q = sanitize_text_field($_GET['date'] ?? '');
 
         $where = [];
         $params = [];
 
-        if ($country !== '') {
-            $where[] = "country = %s";
-            $params[] = $country;
+        if ($country_id !== '') {
+        $where[]  = "hc.country_id = %s";
+        $params[] = $country_id;
         }
         if ($date_q !== '') {
-            $where[] = "`date` = %s";
-            $params[] = $date_q;
-        }
+        $where[]  = "hc.`date` = %s";
+        $params[] = $date_q;
+        }   
 
-        $where_sql = $where ? ("WHERE " . implode(" AND ", $where)) : "";
-
-        $sql = "SELECT SQL_CALC_FOUND_ROWS id, `date`, country, created_on, modified_on 
-                FROM {$this->table} 
-                $where_sql 
-                ORDER BY `date` DESC 
-                LIMIT %d OFFSET %d";
+        // Consulta con JOIN para mostrar el nombre del país
+        $sql = "
+        SELECT SQL_CALC_FOUND_ROWS 
+           hc.id, 
+           hc.`date`, 
+           c.country_name,  
+           hc.modified_on,
+           hc.modified_by
+        FROM {$this->table} hc
+        LEFT JOIN hfx_country c ON hc.country_id = c.id
+        $where_sql
+        ORDER BY hc.`date` DESC
+        LIMIT %d OFFSET %d
+        ";
 
         // Añadimos paginación al final
         $params[] = $per_page;
@@ -65,14 +72,28 @@ class Holiday_Calendar_Admin {
         $add_url = admin_url('admin.php?page=hca_form');
         ?>
         <div class="wrap">
-            <h1 class="wp-heading-inline">Holiday Calendar</h1>
+            <h1 class="wp-heading-inline">Administración de feriados</h1>
             <a href="<?php echo esc_url($add_url); ?>" class="page-title-action">Agregar feriado</a>
             <hr class="wp-header-end">
+
+            <?php
+            // Obtener países desde la tabla hfx_country
+            global $wpdb;
+            $countries = $wpdb->get_results("SELECT id, country_name FROM hfx_country ORDER BY country_name ASC");
+            ?>
 
             <form method="get" style="margin-top:10px;margin-bottom:10px;">
                 <input type="hidden" name="page" value="hca_list">
                 <label>País: 
-                    <input type="text" name="country" value="<?php echo esc_attr($country); ?>" placeholder="CO">
+                    <select name="country_id">
+                        <option value="">Todos</option>
+                        <?php foreach ($countries as $c): ?>
+                            <option value="<?php echo esc_attr($c->id); ?>" 
+                                <?php selected($country_id, $c->id); ?>>
+                                <?php echo esc_html($c->country_name); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </label>
                 <label style="margin-left:10px;">Fecha:
                     <input type="date" name="date" value="<?php echo esc_attr($date_q); ?>">
@@ -86,8 +107,8 @@ class Holiday_Calendar_Admin {
                     <tr>
                         <th>Fecha</th>
                         <th>País</th>
-                        <th>Creado</th>
                         <th>Modificado</th>
+                        <th>Modificado por</th>
                         <th style="width:160px;">Acciones</th>
                     </tr>
                 </thead>
@@ -101,9 +122,9 @@ class Holiday_Calendar_Admin {
                 ?>
                     <tr>
                         <td><?php echo esc_html($r->date); ?></td>
-                        <td><?php echo esc_html($r->country); ?></td>
-                        <td><?php echo esc_html($r->created_on); ?></td>
+                        <td><?php echo esc_html($r->country_name); ?></td>
                         <td><?php echo esc_html($r->modified_on); ?></td>
+                        <td><?php echo esc_html($r->modified_by); ?></td>
                         <td>
                             <a class="button button-small" href="<?php echo esc_url($edit_url); ?>">Editar</a>
                             <a class="button button-small button-link-delete" href="<?php echo esc_url($del_url); ?>"
@@ -165,14 +186,33 @@ class Holiday_Calendar_Admin {
                     <input type="hidden" name="id" value="<?php echo esc_attr($row->id); ?>">
                 <?php endif; ?>
 
+                <?php
+                // Obtener países desde la tabla hfx_country
+                global $wpdb;
+                $countries = $wpdb->get_results("SELECT id, country_name FROM hfx_country ORDER BY country_name ASC");
+
+                // Si es edición, obtener el país actual
+                $current_country_id = $row->country_id ?? '';
+                ?>
+
                 <table class="form-table" role="presentation">
                     <tr>
                         <th scope="row"><label for="date">Fecha</label></th>
                         <td><input required type="date" id="date" name="date" value="<?php echo esc_attr($row->date ?? ''); ?>" class="regular-text"></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="country">País</label></th>
-                        <td><input required type="text" id="country" name="country" value="<?php echo esc_attr($row->country ?? 'CO'); ?>" class="regular-text" maxlength="100"></td>
+                        <th scope="row"><label for="country_id">País</label></th>
+                        <td>
+                            <select id="country_id" name="country_id">
+                                <option value="">-- Seleccionar país --</option>
+                                <?php foreach ($countries as $c): ?>
+                                    <option value="<?php echo esc_attr($c->id); ?>" 
+                                        <?php selected($current_country_id, $c->id); ?>>
+                                        <?php echo esc_html($c->country_name); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
                     </tr>
                 </table>
 
@@ -198,12 +238,13 @@ class Holiday_Calendar_Admin {
         $created_by  = sanitize_text_field($_POST['created_by'] ?? '');
         $modified_by = sanitize_text_field($_POST['modified_by'] ?? '');
 
-        if (!$date || !$country) {
+        if (!$date || !$country_id) {
             wp_redirect(add_query_arg(['page' => 'hca_form', 'error' => 'required'], admin_url('admin.php')));
             exit;
         }
 
         $now = current_time('mysql', true); // UTC en formato MySQL
+        $user_login = wp_get_current_user()->user_login;
 
         if ($id) {
             // UPDATE
@@ -211,9 +252,9 @@ class Holiday_Calendar_Admin {
                 $this->table,
                 [
                     'date'        => $date,
-                    'country'     => $country,
+                    'country_id'  => $country_id,
                     'modified_on' => $now,
-                    'modified_by' => $modified_by ?: wp_get_current_user()->user_login,
+                    'modified_by' => $modified_by ?: $user_login,
                 ],
                 ['id' => $id],
                 ['%s','%s','%s','%s'],
@@ -223,12 +264,14 @@ class Holiday_Calendar_Admin {
             // INSERT (genera UUID)
             $wpdb->query(
                 $wpdb->prepare(
-                    "INSERT INTO {$this->table} (id, `date`, country, created_on, created_by) 
-                     VALUES (UUID(), %s, %s, %s, %s)",
+                    "INSERT INTO {$this->table} (id, `date`, country_id, created_on, created_by, modified_on, modified_by)
+                     VALUES (UUID(), %s, %s, %s, %s, %s, %s)",
                     $date,
-                    $country,
+                    $country_id,
                     $now,
-                    $created_by ?: wp_get_current_user()->user_login
+                    $created_by ?: $user_login,
+                    $now,
+                    $modified_by ?: $user_login
                 )
             );
         }
