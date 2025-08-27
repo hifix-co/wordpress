@@ -78,7 +78,7 @@ class Message_Packages_Admin {
         ?>
         <div class="wrap">
             <h1 class="wp-heading-inline">Paquetes de Mensajes</h1>
-            <a href="<?php echo admin_url($add_url); ?>" class="page-title-action">Agregar nuevo paquete</a>
+            <a href="<?php echo esc_url($add_url); ?>" class="page-title-action">Agregar nuevo paquete</a>
             <hr class="wp-header-end">
 
             <form method="get" style="margin:10px 0;">
