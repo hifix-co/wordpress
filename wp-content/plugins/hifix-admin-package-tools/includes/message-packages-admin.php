@@ -1,79 +1,69 @@
 <?php
-/**
- * Admin: CRUD de Paquetes de Mensajes
- */
+if ( ! defined( 'ABSPATH' ) ) exit;
 
-if (!defined('ABSPATH')) {
-    exit;
-}
-
-class Hifix_Message_Packages_Admin {
+class Message_Packages_Admin {
     private $table;
     private $currency_table;
 
     public function __construct() {
         global $wpdb;
-        $this->table = $wpdb->prefix . "hfx_message_packages";
-        $this->currency_table = $wpdb->prefix . "hfx_currency";
+        $this->table = $wpdb->prefix . "message_packages";
+        $this->currency_table = $wpdb->prefix . "currency";
 
-        add_action('admin_post_hmp_save', [$this, 'handle_save']);
-        add_action('admin_post_hmp_delete', [$this, 'handle_delete']);
+        add_action('admin_post_mpa_save', [$this, 'handle_save']);
+        add_action('admin_post_mpa_delete', [$this, 'handle_delete']);
     }
 
     private function check_caps() {
-        if (!current_user_can('manage_options')) {
+        if ( ! current_user_can('manage_options') ) {
             wp_die('No tienes permisos suficientes.');
         }
     }
 
-    /**
-     * LISTA
-     */
+    /** ---------------- LISTADO ---------------- */
     public function render_list_page() {
         global $wpdb;
 
-        $results = $wpdb->get_results("
-            SELECT p.id, p.package_name, p.monthly_message_limit, p.price, 
-                   c.currency_code, p.modified_on, p.modified_by
-            FROM {$this->table} p
-            LEFT JOIN {$this->currency_table} c ON p.currency_id = c.id
-            ORDER BY p.package_name ASC
-        ");
+        $sql = "SELECT p.id, p.package_name, p.monthly_message_limit, p.price, 
+                       c.currency_name, c.currency_code, p.modified_on, p.modified_by
+                FROM {$this->table} p
+                LEFT JOIN {$this->currency_table} c ON p.currency_id = c.id
+                ORDER BY p.created_on DESC";
+
+        $rows = $wpdb->get_results($sql);
 
         ?>
         <div class="wrap">
-            <h1>Paquetes de Mensajes <a href="<?php echo esc_url(admin_url('admin.php?page=message_package_form')); ?>" class="page-title-action">Añadir nuevo</a></h1>
+            <h1 class="wp-heading-inline">Paquetes de Mensajes</h1>
+            <a href="<?php echo admin_url('admin.php?page=message_packages_form'); ?>" class="page-title-action">Agregar nuevo</a>
+            <hr class="wp-header-end">
 
-            <table class="widefat striped">
+            <table class="widefat fixed striped">
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Límite de mensajes</th>
-                        <th>Moneda</th>
+                        <th>Límite mensual</th>
                         <th>Precio</th>
+                        <th>Moneda</th>
                         <th>Modificado</th>
-                        <th>Modificado por</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if ($results): ?>
-                        <?php foreach ($results as $r): ?>
-                            <tr>
-                                <td><?php echo esc_html($r->package_name); ?></td>
-                                <td><?php echo esc_html($r->monthly_message_limit); ?></td>
-                                <td><?php echo esc_html($r->currency_code); ?></td>
-                                <td><?php echo esc_html($r->price); ?></td>
-                                <td><?php echo esc_html($r->modified_on); ?></td>
-                                <td><?php echo esc_html($r->modified_by); ?></td>
-                                <td>
-                                    <a href="<?php echo esc_url(admin_url('admin.php?page=message_package_form&id=' . $r->id)); ?>">Editar</a> | 
-                                    <a href="<?php echo esc_url(wp_nonce_url(admin_url('admin-post.php?action=hmp_delete&id=' . $r->id), 'hmp_delete')); ?>" onclick="return confirm('¿Eliminar paquete?');">Eliminar</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr><td colspan="7">No hay paquetes registrados.</td></tr>
+                    <?php if ($rows): foreach ($rows as $row): ?>
+                        <tr>
+                            <td><?php echo esc_html($row->package_name); ?></td>
+                            <td><?php echo esc_html($row->monthly_message_limit); ?></td>
+                            <td><?php echo esc_html($row->price); ?></td>
+                            <td><?php echo esc_html($row->currency_code . " - " . $row->currency_name); ?></td>
+                            <td><?php echo esc_html($row->modified_on . " por " . $row->modified_by); ?></td>
+                            <td>
+                                <a href="<?php echo admin_url('admin.php?page=message_packages_form&id=' . $row->id); ?>">Editar</a> |
+                                <a href="<?php echo wp_nonce_url(admin_url('admin-post.php?action=mpa_delete&id=' . $row->id), 'mpa_delete'); ?>" onclick="return confirm('¿Seguro de eliminar este paquete?');">Eliminar</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; else: ?>
+                        <tr><td colspan="6">No hay paquetes registrados.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -81,30 +71,27 @@ class Hifix_Message_Packages_Admin {
         <?php
     }
 
-    /**
-     * FORMULARIO
-     */
+    /** ---------------- FORMULARIO ---------------- */
     public function render_form_page() {
         global $wpdb;
-
-        $id = sanitize_text_field($_GET['id'] ?? '');
+        $is_edit = !empty($_GET['id']);
         $row = null;
-        if ($id) {
-            $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$this->table} WHERE id=%s", $id));
+
+        if ($is_edit) {
+            $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %s", $_GET['id']));
         }
 
+        // Cargar lista de monedas
         $currencies = $wpdb->get_results("SELECT id, currency_name, currency_code FROM {$this->currency_table} ORDER BY currency_name ASC");
 
-        $nonce = wp_create_nonce('hmp_save');
         $action_url = admin_url('admin-post.php');
-        $is_edit = (bool)$row;
-
+        $nonce = wp_create_nonce('mpa_save');
         ?>
         <div class="wrap">
             <h1><?php echo $is_edit ? 'Editar paquete' : 'Agregar paquete'; ?></h1>
 
             <form method="post" action="<?php echo esc_url($action_url); ?>" style="max-width:600px;">
-                <input type="hidden" name="action" value="hmp_save">
+                <input type="hidden" name="action" value="mpa_save">
                 <input type="hidden" name="_wpnonce" value="<?php echo esc_attr($nonce); ?>">
                 <?php if ($is_edit): ?>
                     <input type="hidden" name="id" value="<?php echo esc_attr($row->id); ?>">
@@ -113,99 +100,98 @@ class Hifix_Message_Packages_Admin {
                 <table class="form-table">
                     <tr>
                         <th><label for="package_name">Nombre</label></th>
-                        <td><input required type="text" name="package_name" value="<?php echo esc_attr($row->package_name ?? ''); ?>" class="regular-text"></td>
+                        <td><input required type="text" id="package_name" name="package_name" value="<?php echo esc_attr($row->package_name ?? ''); ?>" class="regular-text"></td>
                     </tr>
                     <tr>
-                        <th><label for="monthly_message_limit">Límite de mensajes</label></th>
-                        <td><input required type="number" name="monthly_message_limit" value="<?php echo esc_attr($row->monthly_message_limit ?? ''); ?>" class="regular-text"></td>
+                        <th><label for="monthly_message_limit">Límite mensual</label></th>
+                        <td><input required type="number" id="monthly_message_limit" name="monthly_message_limit" value="<?php echo esc_attr($row->monthly_message_limit ?? ''); ?>" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="price">Precio</label></th>
+                        <td><input required type="number" step="0.01" id="price" name="price" value="<?php echo esc_attr($row->price ?? ''); ?>" class="regular-text"></td>
                     </tr>
                     <tr>
                         <th><label for="currency_id">Moneda</label></th>
                         <td>
-                            <select required name="currency_id">
-                                <option value="">Seleccione moneda</option>
-                                <?php foreach ($currencies as $c): ?>
-                                    <option value="<?php echo esc_attr($c->id); ?>" <?php selected($row->currency_id ?? '', $c->id); ?>>
-                                        <?php echo esc_html($c->currency_name . " ({$c->currency_code})"); ?>
+                            <select required id="currency_id" name="currency_id">
+                                <option value="">-- Seleccionar moneda --</option>
+                                <?php foreach ($currencies as $currency): ?>
+                                    <option value="<?php echo esc_attr($currency->id); ?>"
+                                        <?php selected($row->currency_id ?? '', $currency->id); ?>>
+                                        <?php echo esc_html($currency->currency_code . " - " . $currency->currency_name); ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <th><label for="price">Precio</label></th>
-                        <td><input required type="number" step="0.01" name="price" value="<?php echo esc_attr($row->price ?? ''); ?>" class="regular-text"></td>
-                    </tr>
                 </table>
 
                 <?php submit_button($is_edit ? 'Guardar cambios' : 'Crear paquete'); ?>
-                <a class="button button-secondary" href="<?php echo esc_url(admin_url('admin.php?page=message_packages')); ?>">Volver</a>
+                <a class="button button-secondary" href="<?php echo esc_url(admin_url('admin.php?page=message_packages_list')); ?>">Volver</a>
             </form>
         </div>
         <?php
     }
 
-    /**
-     * SAVE
-     */
+    /** ---------------- GUARDAR ---------------- */
     public function handle_save() {
         $this->check_caps();
 
-        if (!wp_verify_nonce($_POST['_wpnonce'] ?? '', 'hmp_save')) {
+        if (!wp_verify_nonce($_POST['_wpnonce'] ?? '', 'mpa_save')) {
             wp_die('Nonce inválido.');
         }
 
         global $wpdb;
 
-        $id          = sanitize_text_field($_POST['id'] ?? '');
-        $name        = sanitize_text_field($_POST['package_name'] ?? '');
-        $limit       = intval($_POST['monthly_message_limit'] ?? 0);
-        $currency_id = sanitize_text_field($_POST['currency_id'] ?? '');
-        $price       = floatval($_POST['price'] ?? 0);
-        $now         = current_time('mysql', true);
-        $user        = wp_get_current_user()->user_login;
+        $id       = sanitize_text_field($_POST['id'] ?? '');
+        $name     = sanitize_text_field($_POST['package_name'] ?? '');
+        $limit    = intval($_POST['monthly_message_limit'] ?? 0);
+        $price    = floatval($_POST['price'] ?? 0);
+        $currency = sanitize_text_field($_POST['currency_id'] ?? '');
+        $user     = wp_get_current_user()->user_login;
+        $now      = current_time('mysql', true);
 
-        if (!$name || !$limit || !$currency_id || !$price) {
-            wp_redirect(add_query_arg(['page' => 'message_package_form', 'error' => 'required'], admin_url('admin.php')));
+        if (!$name || !$limit || !$price || !$currency) {
+            wp_redirect(add_query_arg(['page' => 'message_packages_form', 'error' => 'required'], admin_url('admin.php')));
             exit;
         }
 
         if ($id) {
+            // UPDATE
             $wpdb->update(
                 $this->table,
                 [
-                    'package_name' => $name,
+                    'package_name'          => $name,
                     'monthly_message_limit' => $limit,
-                    'currency_id' => $currency_id,
-                    'price' => $price,
-                    'modified_on' => $now,
-                    'modified_by' => $user,
+                    'price'                 => $price,
+                    'currency_id'           => $currency,
+                    'modified_on'           => $now,
+                    'modified_by'           => $user,
                 ],
                 ['id' => $id],
-                ['%s','%d','%s','%f','%s','%s'],
+                ['%s','%d','%f','%s','%s','%s'],
                 ['%s']
             );
         } else {
+            // INSERT
             $wpdb->query(
                 $wpdb->prepare(
-                    "INSERT INTO {$this->table} (id, package_name, monthly_message_limit, currency_id, price, created_on, created_by) 
-                     VALUES (UUID(), %s, %d, %s, %f, %s, %s)",
-                    $name, $limit, $currency_id, $price, $now, $user
+                    "INSERT INTO {$this->table} (id, package_name, monthly_message_limit, price, currency_id, created_on, created_by) 
+                     VALUES (UUID(), %s, %d, %f, %s, %s, %s)",
+                    $name, $limit, $price, $currency, $now, $user
                 )
             );
         }
 
-        wp_redirect(admin_url('admin.php?page=message_packages'));
+        wp_redirect(admin_url('admin.php?page=message_packages_list'));
         exit;
     }
 
-    /**
-     * DELETE
-     */
+    /** ---------------- ELIMINAR ---------------- */
     public function handle_delete() {
         $this->check_caps();
 
-        if (!wp_verify_nonce($_REQUEST['_wpnonce'] ?? '', 'hmp_delete')) {
+        if (!wp_verify_nonce($_REQUEST['_wpnonce'] ?? '', 'mpa_delete')) {
             wp_die('Nonce inválido.');
         }
 
@@ -214,26 +200,23 @@ class Hifix_Message_Packages_Admin {
         if ($id) {
             $wpdb->delete($this->table, ['id' => $id], ['%s']);
         }
-        wp_redirect(admin_url('admin.php?page=message_packages'));
+        wp_redirect(admin_url('admin.php?page=message_packages_list'));
         exit;
     }
 }
 
 // Instancia global
-global $hifix_hmp;
-if (!isset($hifix_hmp) || !($hifix_hmp instanceof Hifix_Message_Packages_Admin)) {
-    $hifix_hmp = new Hifix_Message_Packages_Admin();
+global $hifix_mpa;
+if ( ! isset($hifix_mpa) || ! ($hifix_mpa instanceof Message_Packages_Admin) ) {
+    $hifix_mpa = new Message_Packages_Admin();
 }
 
-/**
- * Callbacks para el menú
- */
+// Callbacks para menús
 function hifix_render_message_packages_list() {
-    global $hifix_hmp;
-    $hifix_hmp->render_list_page();
+    global $hifix_mpa;
+    $hifix_mpa->render_list_page();
 }
-
 function hifix_render_message_packages_form() {
-    global $hifix_hmp;
-    $hifix_hmp->render_form_page();
+    global $hifix_mpa;
+    $hifix_mpa->render_form_page();
 }
