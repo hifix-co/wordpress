@@ -24,7 +24,7 @@ add_action('admin_menu', function() {
         'Feriados',
         'Feriados',
         'manage_options',
-        'hca_list',
+        'feriados',
         'hifix_render_feriados_list'
     );
 
@@ -34,7 +34,7 @@ add_action('admin_menu', function() {
         'Feriado',
         'Feriado',
         'manage_options',
-        'hca_form',
+        'formulario_feriados',
         'hifix_render_feriados_form'
     );
     // Eliminar el submenú duplicado "Hifix Admin"
