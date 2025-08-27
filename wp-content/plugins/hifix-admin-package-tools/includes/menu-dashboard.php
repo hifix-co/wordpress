@@ -24,18 +24,37 @@ add_action('admin_menu', function() {
         'Feriados',
         'Feriados',
         'manage_options',
-        'feriados',
+        'holiday_calendar',
         'hifix_render_feriados_list'
     );
 
-    // Página "oculta" para el formulario (no aparece en el menú)
+    // Submenú: Lista de paquetes de mensajes
+    add_submenu_page(
+        'hifix_admin',
+        'Paquetes de Mensajes',
+        'Paquetes de Mensajes',
+        'manage_options',
+        'message_packages',
+        'hifix_render_message_packages_list'
+    );
+
+    // Ocultar formularios en submenú
     add_submenu_page(
         null,
         'Feriado',
         'Feriado',
         'manage_options',
-        'formulario_feriados',
+        'holiday_calendar_form',
         'hifix_render_feriados_form'
+    );
+
+    add_submenu_page(
+        null,
+        'Editar Paquete',
+        'Editar Paquete',
+        'manage_options',
+        'message_package_form',
+        'hifix_render_message_packages_form'
     );
     // Eliminar el submenú duplicado "Hifix Admin"
     remove_submenu_page('hifix_admin', 'hifix_admin');

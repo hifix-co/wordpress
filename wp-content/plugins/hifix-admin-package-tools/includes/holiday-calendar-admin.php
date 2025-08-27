@@ -71,7 +71,7 @@ class Holiday_Calendar_Admin {
 
         $countries = $wpdb->get_results("SELECT id, country_name FROM {$this->country_table} ORDER BY country_name ASC");
 
-        $add_url = admin_url('admin.php?page=formulario_feriados');
+        $add_url = admin_url('admin.php?page=holiday_calendar_form');
         ?>
         <div class="wrap">
             <h1 class="wp-heading-inline">Administración de feriados</h1>
@@ -79,7 +79,7 @@ class Holiday_Calendar_Admin {
             <hr class="wp-header-end">
 
             <form method="get" style="margin:10px 0;">
-                <input type="hidden" name="page" value="feriados">
+                <input type="hidden" name="page" value="holiday_calendar">
                 <label>País:
                     <select name="country_id">
                         <option value="">-- Todos --</option>
@@ -96,7 +96,7 @@ class Holiday_Calendar_Admin {
                 </label>
 
                 <button class="button">Filtrar</button>
-                <a class="button" href="<?php echo esc_url(admin_url('admin.php?page=feriados')); ?>">Limpiar</a>
+                <a class="button" href="<?php echo esc_url(admin_url('admin.php?page=holiday_calendar')); ?>">Limpiar</a>
             </form>
 
             <table class="widefat striped">
@@ -111,7 +111,7 @@ class Holiday_Calendar_Admin {
                 </thead>
                 <tbody>
                 <?php if ($rows): foreach ($rows as $r):
-                    $edit_url = admin_url('admin.php?page=formulario_feriados&id=' . urlencode($r->id));
+                    $edit_url = admin_url('admin.php?page=holiday_calendar_form&id=' . urlencode($r->id));
                     $del_action_url = admin_url('admin-post.php?action=hca_delete&id=' . urlencode($r->id));
                     $del_url = wp_nonce_url($del_action_url, 'hca_delete');
                 ?>
@@ -211,7 +211,7 @@ class Holiday_Calendar_Admin {
                 </table>
 
                 <?php submit_button($is_edit ? 'Guardar cambios' : 'Crear feriado'); ?>
-                <a class="button button-secondary" href="<?php echo esc_url(admin_url('admin.php?page=feriados')); ?>">Volver</a>
+                <a class="button button-secondary" href="<?php echo esc_url(admin_url('admin.php?page=holiday_calendar')); ?>">Volver</a>
             </form>
         </div>
         <?php
@@ -236,7 +236,7 @@ class Holiday_Calendar_Admin {
         $modified_by = sanitize_text_field($_POST['modified_by'] ?? '');
 
         if (!$date || !$country_id) {
-            wp_redirect(add_query_arg(['page' => 'formulario_feriados', 'error' => 'required'], admin_url('admin.php')));
+            wp_redirect(add_query_arg(['page' => 'holiday_calendar_form', 'error' => 'required'], admin_url('admin.php')));
             exit;
         }
 
@@ -255,7 +255,7 @@ class Holiday_Calendar_Admin {
 
         if ($exists > 0) {
             $redirect_url = add_query_arg([
-                'page' => 'formulario_feriados',
+                'page' => 'holiday_calendar_form',
                 'error' => 'duplicate',
                 'id' => $id
             ], admin_url('admin.php'));
@@ -294,7 +294,7 @@ class Holiday_Calendar_Admin {
             );
         }
 
-        wp_redirect(admin_url('admin.php?page=feriados'));
+        wp_redirect(admin_url('admin.php?page=holiday_calendar'));
         exit;
     }
 
@@ -313,7 +313,7 @@ class Holiday_Calendar_Admin {
         if ($id) {
             $wpdb->delete($this->table, ['id' => $id], ['%s']);
         }
-        wp_redirect(admin_url('admin.php?page=feriados'));
+        wp_redirect(admin_url('admin.php?page=holiday_calendar'));
         exit;
     }
 }
