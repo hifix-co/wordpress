@@ -80,8 +80,10 @@ if ( !class_exists( 'Stackable_Go_Premium_Notification' ) ) {
 
         // 7 * 24 * 60 * 60
         function __construct() {
-            add_action( 'admin_menu', array($this, 'check_pro_notice_date'), 9 );
-            add_action( 'admin_menu', array($this, 'go_premium_notice_old_raters'), 9 );
+            if ( is_admin() ) {
+                add_action( 'admin_menu', array($this, 'check_pro_notice_date'), 9 );
+                add_action( 'admin_menu', array($this, 'go_premium_notice_old_raters'), 9 );
+            }
         }
 
         /**
