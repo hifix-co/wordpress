@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/c8fbe9f9-345f-45a6-b2da-3e56e24a7803/resourceGroups/rg-eastus-prd-web-hifix/providers/Microsoft.Web/sites/wa-weastus2-landingpage-prd",
-    "appService.deploySubpath": "."
-}
