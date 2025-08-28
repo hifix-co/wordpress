@@ -53,7 +53,7 @@ add_action('admin_menu', function() {
         'Editar Paquete',
         'Editar Paquete',
         'manage_options',
-        'message_package_form',
+        'message_packages_form',
         'hifix_render_message_packages_form'
     );
     // Eliminar el submenú duplicado "Hifix Admin"
