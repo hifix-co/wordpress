@@ -178,6 +178,10 @@ class Message_Packages_Admin {
         $currencies = $wpdb->get_results("SELECT id, currency_name, currency_code FROM {$this->currency_table} ORDER BY currency_name ASC");
 
         // Mostrar errores si vienen en query
+        if (!empty($_GET['error']) && $_GET['error'] === 'duplicated') {
+            echo '<div class="notice notice-error"><p>Ya existe un paquete de mensajes con ese nombre para la moneda seleccionada.</p></div>';
+        }
+
         if (!empty($_GET['error']) && $_GET['error'] === 'required') {
             echo '<div class="notice notice-error"><p>Todos los campos son obligatorios.</p></div>';
         }
@@ -248,6 +252,29 @@ class Message_Packages_Admin {
 
         if (!$name || !$limit || !$price || !$currency) {
             wp_redirect(add_query_arg(['page' => 'message_packages_form', 'error' => 'required'], admin_url('admin.php')));
+            exit;
+        }
+
+        //Validación de duplicados package name y currency id
+        if ($id) {
+            $exists = $wpdb->get_var($wpdb->prepare(
+                "SELECT COUNT(*) FROM {$this->table} WHERE id = %s AND package_name = %s AND currency_id = %s", 
+                $id, $name, $currency
+            ));
+        } else {
+            $exists = $wpdb->get_var($wpdb->prepare(
+                "SELECT COUNT(*) FROM {$this->table} WHERE package_name = %s AND currency_id = %s", 
+                $name, $currency
+            ));
+        }
+
+        if ($exists > 0) {
+            $wp_redirect_url = add_query_arg([
+                'page' => 'message_packages_form', 
+                'error' => 'duplicated',
+                'id' => $id
+            ], admin_url('admin.php'));
+            wp_redirect($wp_redirect_url);
             exit;
         }
 
