@@ -7,14 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_action('admin_menu', function() {
     // Menú principal
     add_menu_page(
-        'Hifix Admin',
-        'Hifix Admin',
+        'Parámetros Hifix',
+        'Parámetros Hifix',
         'manage_options',
         'hifix_admin',
         function () {
-            echo '<div class="wrap"><h1>Hifix Admin</h1><p>Bienvenido al paquete de herramientas de administración.</p></div>';
+            echo '<div class="wrap"><h1>Hifix Parámetros</h1><p>Bienvenido al paquete de herramientas de administración.</p></div>';
         },
-        'dashicons-admin-tools',
+        'dashicons-hammer',
         60
     );
 
