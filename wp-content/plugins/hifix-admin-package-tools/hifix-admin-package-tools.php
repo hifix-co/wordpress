@@ -16,3 +16,4 @@ require_once plugin_dir_path(__FILE__) . 'includes/menu-dashboard.php';
 // CRUDs
 require_once plugin_dir_path(__FILE__) . 'includes/holiday-calendar-admin.php';
 require_once plugin_dir_path(__FILE__) . 'includes/message-packages-admin.php';
+require_once plugin_dir_path(__FILE__) . 'includes/communication-channels-admin.php';

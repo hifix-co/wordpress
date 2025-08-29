@@ -38,6 +38,16 @@ add_action('admin_menu', function() {
         'hifix_render_message_packages_list'
     );
 
+    // Submenú: Lista de administración de canales
+    add_submenu_page(
+        'hifix_admin',
+        'Canales de comunicación',
+        'Canales de comunicación',
+        'manage_options',
+        'communication_channels',
+        'hifix_render_communication_channels_list'
+    );
+
     // Ocultar formularios en submenú
     add_submenu_page(
         null,
@@ -56,6 +66,16 @@ add_action('admin_menu', function() {
         'message_packages_form',
         'hifix_render_message_packages_form'
     );
+
+    add_submenu_page(
+        null,
+        'Editar Canal',
+        'Editar Canal',
+        'manage_options',
+        'communication_channels_form',
+        'hifix_render_communication_channels_form'
+    );
+
     // Eliminar el submenú duplicado "Hifix Admin"
     remove_submenu_page('hifix_admin', 'hifix_admin');
 });
